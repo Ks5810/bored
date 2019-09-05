@@ -7,5 +7,8 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+<<<<<<< HEAD
 priority-queue='0.6.0'
 
+=======
+>>>>>>> a06cdf1fb61e477320eb1a2570aae805c23425e5

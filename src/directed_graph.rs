@@ -9,7 +9,7 @@ use std::convert::{TryFrom, TryInto};
 use crate::{vertices::V, edges::E, disjoint_set::DisjointSet};
 use std::collections::VecDeque;
 
-//directed graph
+
 #[derive(Debug, Clone)]
 pub struct DirectedGraph<T> {
     adj_list: Vec<Box<V<T>>>,
@@ -31,8 +31,8 @@ impl<T> DirectedGraph<T>
             ))).collect()
         };
         for edge in _edges.iter() {
-            return_val[edge.src].adj.push_back(edge.dest);
-            return_val[edge.dest].in_degree += 1;
+            return_val[edge.src()].adj.push_back(edge.dest());
+            return_val[edge.dest()].in_degree += 1;
         }
         return_val
     }
@@ -48,7 +48,7 @@ impl<T> DirectedGraph<T>
     pub fn print(self) {
         println!("{}", "Edge  :  Weight");
         for edge in self.edges.iter() {
-            println!("{} - {} : {}", edge.src, edge.dest, edge.weight);
+            println!("{} - {} : {}", edge.src(), edge.dest(), edge.weight());
         }
     }
     
@@ -108,13 +108,13 @@ impl<T> DirectedGraph<T>
         PriorityQueue::with_capacity(self.size);
         
         for edge in self.edges.iter() {
-            priority_queue.push(edge, edge.weight);
+            priority_queue.push(edge, edge.weight());
         }
         
         while edges_accepted < (self.size - 1) && !priority_queue.is_empty() {
             let (edge, _p) = priority_queue.pop().unwrap();
-            let src = isize::try_from(edge.src).unwrap();
-            let weight = isize::try_from(edge.dest).unwrap();
+            let src = isize::try_from(edge.src()).unwrap();
+            let weight = isize::try_from(edge.dest()).unwrap();
             u_set = dis_sets.find(src).try_into().unwrap();
             v_set = dis_sets.find(weight).try_into().unwrap();
             

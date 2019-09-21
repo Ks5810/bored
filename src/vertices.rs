@@ -8,10 +8,10 @@ use std::collections::LinkedList;
 
 #[derive(Debug, Clone)]
 pub struct V<T> {
-    pub(crate) element: T,
-    pub(crate) in_degree: u32,
-    pub(crate) num_visited: u32,
-    pub(crate) adj: LinkedList<usize>
+    pub element: T,
+    pub in_degree: u32,
+    pub num_visited: u32,
+    pub adj: LinkedList<usize>
 }
 
 impl<T> V<T> {
@@ -23,8 +23,15 @@ impl<T> V<T> {
             adj: LinkedList::new()
         }
     }
-    pub fn with(element: T, in_degree: u32, num_visited: u32, adj:
-    LinkedList<usize>) -> V<T> {
-        V { element, in_degree, num_visited, adj }
+    pub fn with(element: T,
+                in_degree: u32,
+                num_visited: u32,
+                adj: LinkedList<usize>) -> V<T> {
+                    V { element, in_degree, num_visited, adj }
     }
+    pub fn element(&self) -> &T { &self.element }
+    pub fn in_degree(&self) -> u32 { self.in_degree }
+    pub fn num_visited(&self) -> u32 { self.num_visited }
+    pub fn adj(&self) -> &LinkedList<usize> { &self.adj }
+    
 }

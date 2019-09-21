@@ -8,9 +8,9 @@ use std::cmp::Ordering;
 
 #[derive(Debug, Copy, Clone, Hash, Eq)]
 pub struct E {
-    pub(crate) src: usize,
-    pub(crate) dest: usize,
-    pub(crate) weight: i32
+    src: usize,
+    dest: usize,
+    weight: i32
 }
 
 
@@ -20,6 +20,9 @@ impl E {
     pub fn with(src: usize, dest: usize, weight: i32) -> E {
         E { src, dest, weight }
     }
+    pub fn src(&self) -> usize { self.src }
+    pub fn dest(&self) -> usize { self.dest }
+    pub fn weight(&self) -> i32 { self.weight }
 }
 
 impl Ord for E {

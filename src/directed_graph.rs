@@ -126,6 +126,7 @@ impl<T> DirectedGraph<T>
         }
         self.edges = tmp_edges;
     }
+    #[allow(dead_code)]
     fn reset(&mut self) {
         for mut adj in self.adj_list.to_owned() {
             adj.num_visited = 0;

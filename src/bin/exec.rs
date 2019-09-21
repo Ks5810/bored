@@ -5,7 +5,6 @@ Created on      : 9/21/19
 Description     : executable crate
 *******************************************************************************/
 extern crate graph_practice;
-use graph_practice::*;
 use graph_practice::{vertices::V,
                      edges::E,
                      directed_graph::DirectedGraph};
@@ -36,8 +35,8 @@ fn main() {
     ];
     
     let size: usize = node_elem.len();
-    let mut graph:DirectedGraph<u32> = DirectedGraph::new(vertices,
-                                                          &edges,size);
+    let mut graph:DirectedGraph<u32> =
+            DirectedGraph::new(vertices,&edges,size);
     
     println!("circle: {}", graph.check_cycle());
     graph.dfs();
